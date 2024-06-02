@@ -34,3 +34,11 @@ def limpar_tela(linhas=20):
     for i in range(linhas):
         print("\n")
     return
+
+
+def print_de_opcoes(lista):
+    output = ''
+    for i in range(len(lista)):
+        output += f'- {lista[i]}\n'
+    output += '-->'
+    return print(output)
