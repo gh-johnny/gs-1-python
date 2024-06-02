@@ -1,0 +1,37 @@
+from helpers import forca_opcao, verifica_numero, meu_in, meu_index, limpar_tela
+
+def sys_doacao():
+    while True:
+            doacao = verifica_numero("Digite a quantia que deseja doar\n--> ", "Digite apenas números!")
+            escolha_doacao = input(f"Você deseja doar R${doacao:.2f} ?('s' para continuar e 'n' para voltar)"
+                                    "\n--> ")
+            if escolha_doacao == "s":
+                print(f"Muitissímo obrigado pela sua doação de R${doacao:.2f} !!!")
+                break
+            elif escolha_doacao == "n":
+                continue
+
+lista_menu_opcao = ['1', '2', '3', '0']
+nome_provisorio = "NOME PROVISORIO"
+
+print(f"Seja bem-vindo a {nome_provisorio}!!!")
+while True:
+    caminho = forca_opcao("Por qual caminho você deseja seguir:\n" 
+                            "1 - Simulação\n"
+                            "2 - Dados capturados\n" 
+                            "3 - Doação\n" 
+                            "0 - Sair\n--> ", lista_menu_opcao, "Opção inválida! Digite apenas os números correspondentes ao caminho indicado")
+    limpar_tela()
+    if caminho == '1':
+        #Johnny part  
+        print("Bem-vindo ao sistema de escaneamento...!")
+    elif caminho == '2':
+        print(f"Bem-vindo ao banco de dados {nome_provisorio}, aqui você encontrará todos os tipos de dados " 
+              "capturados pelos nossos sensores oceanicos!")
+    elif caminho == '3':
+        print(f"Bem-vindo a seção de doação {nome_provisorio}, aqui você pode fazer doações de quantias " 
+              "de sua preferência para nos ajudar a manter os oceanos sempre monitorados e saudáveis!")
+        sys_doacao()
+    elif caminho == '0':
+        break
+
