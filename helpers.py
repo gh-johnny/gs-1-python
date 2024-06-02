@@ -28,3 +28,9 @@ def verifica_numero(msg, msg_erro):
         print(msg_erro)
         num = input(msg)
     return int(num)
+
+
+def limpar_tela(linhas=20):
+    for i in range(linhas):
+        print("\n")
+    return
