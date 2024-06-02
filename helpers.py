@@ -1,3 +1,9 @@
+def limpar_tela(linhas=20):
+    for i in range(linhas):
+        print("\n")
+    return
+
+
 def meu_in(lista, buscar):
     for i in range(len(lista)):
         elem = lista[i]
@@ -17,6 +23,7 @@ def meu_index(lista, buscar):
 def forca_opcao(msg, lista, msg_erro):
     opcao = input(msg)
     while not meu_in(lista, opcao):
+        limpar_tela()
         print(msg_erro)
         opcao = input(msg)
     return opcao
@@ -30,15 +37,9 @@ def verifica_numero(msg, msg_erro):
     return int(num)
 
 
-def limpar_tela(linhas=20):
-    for i in range(linhas):
-        print("\n")
-    return
-
-
 def print_de_opcoes(lista):
     output = ''
     for i in range(len(lista)):
         output += f'- {lista[i]}\n'
-    output += '-->'
-    return print(output)
+    print(output)
+    return output
