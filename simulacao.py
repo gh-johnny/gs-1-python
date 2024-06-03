@@ -1,4 +1,5 @@
-from helpers import print_de_opcoes, forca_opcao, limpar_tela
+from helpers import forca_opcao, limpar_tela, print_de_opcoes
+from simulacao_paths import get_path, allowed_path
 
 
 simulacao_welcome_msg = ("Olá, seja bem vindo ao nosso sistema de "
@@ -24,22 +25,52 @@ msg_erro_escolha_praia = ('Por favor, escolha exatamente uma praia '
 
 user_praia = forca_opcao(msg_escolha_praia, praias, msg_erro_escolha_praia)
 
-##
+i = 0
+j = 0
 
 
-def tela_simulacao():
-    print(f'{user_praia}:\t\t 0. Para Voltar\n\n'
-          '   \t  1.\n'
-          '   \t^\n'
-          '   \t|\n'
-          '4.   \t|\t 2.\n'
-          ' < - -     - - > \n'
-          '   \t|\n'
-          '   \t|\n'
-          '   \tv\n'
-          '   \t  3.')
-    return
+def andar_mapa(direction):
+    # mapa = [
+    #     [0, 0], [0, 1], [0, 2],
+    #     [1, 0], [1, 1], [1, 2],
+    #     [2, 0], [2, 1], [2, 2],
+    # ]
+
+    global i
+    global j
+
+    if direction == '1':
+        i -= 1
+    elif direction == '3':
+        i += 1
+    elif direction == '2':
+        j += 1
+    elif direction == '4':
+        j -= 1
+
+    return_result = [str(i), str(j)]
+
+    print(return_result)
+    return return_result
 
 
-limpar_tela()
+def tela_simulacao(user_direction_command=-1):
+    def each_step(allowed_command):
+        comandos_disponiveis = print_de_opcoes(
+            allowed_command, line_break=False)
+        opcao_disp = f'As opções disponíveis são: {comandos_disponiveis}\n'
+        return opcao_disp
+
+    which_path_is_allowed = allowed_path()  # Começando em [0, 0]
+
+    while True:
+        limpar_tela()
+        allowed_options = each_step(which_path_is_allowed)
+        print(get_path(which_path_is_allowed, user_praia))
+        user_direction = forca_opcao(
+            'Para onde gostaria de ir?\n--> ', which_path_is_allowed,
+            'Por favor\n' + allowed_options)
+        which_path_is_allowed = allowed_path(andar_mapa(user_direction))
+
+
 tela_simulacao()
