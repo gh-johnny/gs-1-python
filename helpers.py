@@ -43,7 +43,10 @@ def print_de_opcoes(lista, line_break=True):
         if line_break:
             output += f'- {lista[i]}\n'
         else:
-            output += f' {lista[i]},'
+            prefix = ''
+            if i > 0:
+                prefix = ', '
+            output += f'{prefix}{lista[i]}'
     if line_break:
         print(output)
     return output
