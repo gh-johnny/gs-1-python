@@ -25,33 +25,26 @@ msg_erro_escolha_praia = ('Por favor, escolha exatamente uma praia '
 
 user_praia = forca_opcao(msg_escolha_praia, praias, msg_erro_escolha_praia)
 
-i = 0
-j = 0
+y_axis = 0
+x_axis = 0
 
 
 def andar_mapa(direction):
-    # mapa = [
-    #     [0, 0], [0, 1], [0, 2],
-    #     [1, 0], [1, 1], [1, 2],
-    #     [2, 0], [2, 1], [2, 2],
-    # ]
-
-    global i
-    global j
+    global y_axis
+    global x_axis
 
     if direction == '1':
-        i -= 1
+        y_axis -= 1
     elif direction == '3':
-        i += 1
+        y_axis += 1
     elif direction == '2':
-        j += 1
+        x_axis += 1
     elif direction == '4':
-        j -= 1
+        x_axis -= 1
 
-    return_result = [str(i), str(j)]
+    updates_coordinates = [str(y_axis), str(x_axis)]
 
-    print(return_result)
-    return return_result
+    return updates_coordinates
 
 
 def tela_simulacao(user_direction_command=-1):
@@ -64,12 +57,16 @@ def tela_simulacao(user_direction_command=-1):
     which_path_is_allowed = allowed_path()  # Começando em [0, 0]
 
     while True:
-        limpar_tela()
         allowed_options = each_step(which_path_is_allowed)
-        print(get_path(which_path_is_allowed, user_praia))
-        user_direction = forca_opcao(
-            'Para onde gostaria de ir?\n--> ', which_path_is_allowed,
-            'Por favor\n' + allowed_options)
+        current_path = get_path(which_path_is_allowed, user_praia)
+        ask_user_text = 'Para onde gostaria de ir?\n--> '
+        error_msg = 'Por favor...\n' + allowed_options + '\n' + current_path
+
+        limpar_tela()
+        print(each_step(which_path_is_allowed))
+        print(current_path)
+        user_direction = forca_opcao(ask_user_text, which_path_is_allowed,
+                                     error_msg)
         which_path_is_allowed = allowed_path(andar_mapa(user_direction))
 
 

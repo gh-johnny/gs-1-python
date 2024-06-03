@@ -18,6 +18,12 @@ def allowed_path(coordinates=['0', '0']):
     # if 7 -> left, right or up
     # if 8 -> left or up
 
+    # mapa = [
+    #     [[0, 0], [0, 1], [0, 2]],
+    #     [[1, 0], [1, 1], [1, 2]],
+    #     [[2, 0], [2, 1], [2, 2]],
+    # ]
+
     allow = []
 
     if coordinates == ['0', '0']:
@@ -237,6 +243,5 @@ def get_path(allow_list, user_praia):
     #     return_path = left_detected_path
     else:
         return_path = 'NO_PATH'
-    print(allow_list)
 
     return return_path
