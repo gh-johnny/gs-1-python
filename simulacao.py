@@ -51,7 +51,7 @@ def tela_simulacao(user_direction_command=-1):
     def each_step(allowed_command):
         comandos_disponiveis = print_de_opcoes(
             allowed_command, line_break=False)
-        opcao_disp = f'As opções disponíveis são: {comandos_disponiveis}\n'
+        opcao_disp = f'As opções disponíveis são: 0, {comandos_disponiveis}\n'
         return opcao_disp
 
     which_path_is_allowed = allowed_path()  # Começando em [0, 0]
@@ -65,8 +65,11 @@ def tela_simulacao(user_direction_command=-1):
         limpar_tela()
         print(each_step(which_path_is_allowed))
         print(current_path)
-        user_direction = forca_opcao(ask_user_text, which_path_is_allowed,
-                                     error_msg)
+        user_direction = forca_opcao(ask_user_text,
+                                     ['0'] + which_path_is_allowed, error_msg)
+
+        if user_direction == '0':  # Quando o usuário quiser sair
+            break
         which_path_is_allowed = allowed_path(andar_mapa(user_direction))
 
 
