@@ -4,7 +4,7 @@ baixo = '3'
 esquerda = '4'
 
 
-def allowed_path(coordenadas=['0', '0']):
+def caminho_permitido(coordenadas=['0', '0']):
     # mapa = [
     #     (*)
     #     [0, 1, 2],
@@ -66,7 +66,7 @@ def allowed_path(coordenadas=['0', '0']):
     return permitir
 
 
-def get_path(coordenadas, user_praia):
+def pegar_mapa(coordenadas, user_praia):
     COMMANDOS = ['1.', '2.', '3.', '4.']
     info_cima = (f'{user_praia}:\t\t '
                  f'0. Para Voltar\n\n')
@@ -190,54 +190,54 @@ def get_path(coordenadas, user_praia):
                              f'   \t   {emoji_lixo}\n{lixo_achado_texto}\n')
 
     if coordenadas == ['0', '0']:
-        return_path = mapa_0
+        retornar_mapa = mapa_0
     elif coordenadas == ['0', '1']:
-        return_path = mapa_1
+        retornar_mapa = mapa_1
     elif coordenadas == ['0', '2']:
-        return_path = mapa_2
+        retornar_mapa = mapa_2
 
     elif coordenadas == ['1', '0']:
-        return_path = mapa_3
+        retornar_mapa = mapa_3
     elif coordenadas == ['1', '1']:
-        return_path = mapa_4
+        retornar_mapa = mapa_4
     elif coordenadas == ['1', '2']:
-        return_path = mapa_5
+        retornar_mapa = mapa_5
 
     elif coordenadas == ['2', '0']:
-        return_path = mapa_6
+        retornar_mapa = mapa_6
     elif coordenadas == ['2', '1']:
-        return_path = mapa_7
+        retornar_mapa = mapa_7
     elif coordenadas == ['2', '2']:
-        return_path = mapa_8
+        retornar_mapa = mapa_8
 
     elif coordenadas == ['-1', '0']:
         if user_praia == 'praia1':
-            return_path = mapa_extra_cima_peixe
+            retornar_mapa = mapa_extra_cima_peixe
         elif user_praia == 'praia2':
-            return_path = mapa_extra_cima_tronco
+            retornar_mapa = mapa_extra_cima_tronco
         else:
-            return_path = mapa_extra_cima_lixo
+            retornar_mapa = mapa_extra_cima_lixo
             lixo_achado = True
 
     elif coordenadas == ['2', '3']:
         if user_praia == 'praia1':
-            return_path = mapa_extra_direita_tronco
+            retornar_mapa = mapa_extra_direita_tronco
         elif user_praia == 'praia2':
-            return_path = mapa_extra_direita_lixo
+            retornar_mapa = mapa_extra_direita_lixo
             lixo_achado = True
         else:
-            return_path = mapa_extra_direita_peixe
+            retornar_mapa = mapa_extra_direita_peixe
 
     elif coordenadas == ['3', '0']:
         if user_praia == 'praia1':
-            return_path = mapa_extra_baixo_lixo
+            retornar_mapa = mapa_extra_baixo_lixo
             lixo_achado = True
         elif user_praia == 'praia2':
-            return_path = mapa_extra_baixo_peixe
+            retornar_mapa = mapa_extra_baixo_peixe
         else:
-            return_path = mapa_extra_baixo_tronco
+            retornar_mapa = mapa_extra_baixo_tronco
 
     else:
-        return_path = 'NO_PATH'
+        retornar_mapa = 'SEM_MAPA'
 
-    return return_path, lixo_achado
+    return retornar_mapa, lixo_achado

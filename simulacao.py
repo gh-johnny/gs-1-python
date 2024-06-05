@@ -1,18 +1,18 @@
 from helpers import forca_opcao, limpar_tela, print_de_opcoes
-from simulacao_paths import get_path, allowed_path
-
+from simulacao_paths import pegar_mapa, caminho_permitido
 
 simulacao_welcome_msg = ("Olá, seja bem vindo ao nosso sistema de "
                          "simulação de ajuda litorânea!!\n"
                          "Aqui, você pode nos ajudar a encontrar resíduos "
                          "espalhados pela praia de sua escolha.\n"
                          "Nossos escâners irão lhe ajudar a encontrar "
-                         "lixos na área, para que então você possa reportar "
+                         "resíduos na área, para que então "
+                         "você possa reportar "
                          "para o nosso aplicativo.\n"
                          "Além de ajudar o meio ambiente "
                          "você ajuda a si mesmo "
                          "e outras pessoas atualizando-as sobre o "
-                         "estado ambiental daquela região")
+                         "estado ambiental daquela região.")
 
 
 praias = ['praia1', 'praia2', 'praia3']
@@ -43,34 +43,58 @@ def andar_mapa(direction):
         x_axis -= 1
 
     updates_coordinates = [str(y_axis), str(x_axis)]
-
     return updates_coordinates
 
 
-def tela_simulacao(user_direction_command=-1):
+def tela_simulacao():
     def each_step(allowed_command):
         comandos_disponiveis = print_de_opcoes(
             allowed_command, line_break=False)
         opcao_disp = f'As opções disponíveis são: 0, {comandos_disponiveis}\n'
         return opcao_disp
 
-    which_path_is_allowed = allowed_path()  # Começando em [0, 0]
+    qual_caminho_permitido = caminho_permitido()  # Começando em [0, 0]
+    caminho_atual, lixo_achado = pegar_mapa(['0', '0'], user_praia)
+    botao_de_voltar = '0'
+    botao_de_reportar_lixo = 'achei'
+    lixo_foi_achado = False
 
     while True:
-        allowed_options = each_step(which_path_is_allowed)
-        current_path = get_path(which_path_is_allowed, user_praia)
-        ask_user_text = 'Para onde gostaria de ir?\n--> '
-        error_msg = 'Por favor...\n' + allowed_options + '\n' + current_path
+        if lixo_achado:
+            qual_caminho_permitido.append(botao_de_reportar_lixo)
+
+        allowed_options = each_step(qual_caminho_permitido)
+        perguntar_user_texto = 'Para onde gostaria de ir?\n--> '
+        error_msg = 'Por favor...\n' + allowed_options + '\n' + caminho_atual
 
         limpar_tela()
-        print(each_step(which_path_is_allowed))
-        print(current_path)
-        user_direction = forca_opcao(ask_user_text,
-                                     ['0'] + which_path_is_allowed, error_msg)
+        print(each_step(qual_caminho_permitido))
+        print(caminho_atual)
 
-        if user_direction == '0':  # Quando o usuário quiser sair
+        if lixo_foi_achado:
+            user_direction = forca_opcao(perguntar_user_texto,
+                                         [botao_de_reportar_lixo] +
+                                         [botao_de_voltar] +
+                                         qual_caminho_permitido,
+                                         error_msg)
+        else:
+            user_direction = forca_opcao(perguntar_user_texto,
+                                         [botao_de_voltar] +
+                                         qual_caminho_permitido,
+                                         error_msg)
+
+        if user_direction == botao_de_voltar:  # Quando o usuário quiser sair
             break
-        which_path_is_allowed = allowed_path(andar_mapa(user_direction))
+        elif user_direction == botao_de_reportar_lixo:
+            print('Lixo reportado para o aplicativo '
+                  'e para as autoridades locais')
+            return 1
+            break
+
+        pegar_coordenadas = andar_mapa(user_direction)
+        qual_caminho_permitido = caminho_permitido(pegar_coordenadas)
+        caminho_atual, lixo_achado = pegar_mapa(pegar_coordenadas, user_praia)
+        lixo_foi_achado = lixo_achado
 
 
 tela_simulacao()
