@@ -37,9 +37,16 @@ def verifica_numero(msg, msg_erro):
     return int(num)
 
 
-def print_de_opcoes(lista):
+def print_de_opcoes(lista, line_break=True):
     output = ''
     for i in range(len(lista)):
-        output += f'- {lista[i]}\n'
-    print(output)
+        if line_break:
+            output += f'- {lista[i]}\n'
+        else:
+            prefix = ''
+            if i > 0:
+                prefix = ', '
+            output += f'{prefix}{lista[i]}'
+    if line_break:
+        print(output)
     return output
