@@ -68,6 +68,9 @@ def caminho_permitido(coordenadas=['0', '0']):
 
 def pegar_mapa(coordenadas, user_praia):
     COMMANDOS = ['1.', '2.', '3.', '4.']
+    praia1 = 'Maresias'
+    praia2 = 'Juquehy'
+
     info_cima = (f'{user_praia}:\t\t '
                  f'0. Para Voltar\n\n')
     lixo_achado = False
@@ -211,28 +214,28 @@ def pegar_mapa(coordenadas, user_praia):
         retornar_mapa = mapa_8
 
     elif coordenadas == ['-1', '0']:
-        if user_praia == 'praia1':
+        if user_praia == praia1:
             retornar_mapa = mapa_extra_cima_peixe
-        elif user_praia == 'praia2':
+        elif user_praia == praia2:
             retornar_mapa = mapa_extra_cima_tronco
         else:
             retornar_mapa = mapa_extra_cima_lixo
             lixo_achado = True
 
     elif coordenadas == ['2', '3']:
-        if user_praia == 'praia1':
+        if user_praia == praia1:
             retornar_mapa = mapa_extra_direita_tronco
-        elif user_praia == 'praia2':
+        elif user_praia == praia2:
             retornar_mapa = mapa_extra_direita_lixo
             lixo_achado = True
         else:
             retornar_mapa = mapa_extra_direita_peixe
 
     elif coordenadas == ['3', '0']:
-        if user_praia == 'praia1':
+        if user_praia == praia1:
             retornar_mapa = mapa_extra_baixo_lixo
             lixo_achado = True
-        elif user_praia == 'praia2':
+        elif user_praia == praia2:
             retornar_mapa = mapa_extra_baixo_peixe
         else:
             retornar_mapa = mapa_extra_baixo_tronco
