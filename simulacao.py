@@ -1,30 +1,6 @@
 from helpers import forca_opcao, limpar_tela, print_de_opcoes
 from simulacao_paths import pegar_mapa, caminho_permitido
 
-simulacao_welcome_msg = ("Olá, seja bem vindo ao nosso sistema de "
-                         "simulação de ajuda litorânea!!\n"
-                         "Aqui, você pode nos ajudar a encontrar resíduos "
-                         "espalhados pela praia de sua escolha.\n"
-                         "Nossos escâners irão lhe ajudar a encontrar "
-                         "resíduos na área, para que então "
-                         "você possa reportar "
-                         "para o nosso aplicativo.\n"
-                         "Além de ajudar o meio ambiente "
-                         "você ajuda a si mesmo "
-                         "e outras pessoas atualizando-as sobre o "
-                         "estado ambiental daquela região.")
-
-
-praias = ['praia1', 'praia2', 'praia3']
-print_de_praias = print_de_opcoes(praias)
-
-msg_escolha_praia = 'Escolha um praia para escanear!\n--> '
-msg_erro_escolha_praia = ('Por favor, escolha exatamente uma praia '
-                          'da lista:\n'
-                          f'{print_de_praias}')
-
-user_praia = forca_opcao(msg_escolha_praia, praias, msg_erro_escolha_praia)
-
 y_axis = 0
 x_axis = 0
 
@@ -47,6 +23,31 @@ def andar_mapa(direction):
 
 
 def tela_simulacao():
+    simulacao_welcome_msg = ("Olá, seja bem vindo ao nosso sistema de "
+                             "simulação de ajuda litorânea!!\n"
+                             "Aqui, você pode nos ajudar a encontrar resíduos "
+                             "espalhados pela praia de sua escolha.\n"
+                             "Nossos escâners irão lhe ajudar a encontrar "
+                             "resíduos na área, para que então "
+                             "você possa reportar "
+                             "para o nosso aplicativo.\n"
+                             "Além de ajudar o meio ambiente "
+                             "você ajuda a si mesmo "
+                             "e outras pessoas atualizando-as sobre o "
+                             "estado ambiental daquela região.")
+
+    praias = ['Maresias', 'Juquehy', 'Ubatuba']
+    print_de_praias = print_de_opcoes(praias)
+
+    msg_escolha_praia = 'Escolha um praia para escanear!\n--> '
+    msg_erro_escolha_praia = ('Por favor, escolha exatamente uma praia '
+                              'da lista:\n'
+                              f'{print_de_praias}')
+
+    user_praia = forca_opcao(msg_escolha_praia, praias, msg_erro_escolha_praia)
+
+    print(simulacao_welcome_msg)
+
     def each_step(allowed_command):
         comandos_disponiveis = print_de_opcoes(
             allowed_command, line_break=False)
@@ -95,6 +96,3 @@ def tela_simulacao():
         qual_caminho_permitido = caminho_permitido(pegar_coordenadas)
         caminho_atual, lixo_achado = pegar_mapa(pegar_coordenadas, user_praia)
         lixo_foi_achado = lixo_achado
-
-
-tela_simulacao()
