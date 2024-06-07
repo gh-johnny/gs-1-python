@@ -136,7 +136,7 @@ Se line_break é `True`, adiciona uma nova linha após cada elemento. Caso contr
 Retorno: A string formatada com as opções.
 <hr>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o <a href="https://github.com/gh-johnny/gs-1-python/blob/main/main.py">Código</a> 🧑‍💻
 
 ```c
 from helpers import forca_opcao, limpar_tela
