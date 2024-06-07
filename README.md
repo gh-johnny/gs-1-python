@@ -331,7 +331,7 @@ Atualiza as coordenadas e os caminhos permitidos com base na escolha do usuário
 Verifica se o lixo foi encontrado e atualiza a variável correspondente.
 <hr>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o <a href="https://github.com/gh-johnny/gs-1-python/blob/main/simulacao_paths.py">Código</a> 🧑‍💻
 
 ```c
 cima = '1'
