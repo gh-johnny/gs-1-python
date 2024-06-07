@@ -23,7 +23,7 @@ Um app em Python, com o tema de poluição marinha, que dá ao usuário escolhas
  
 <br>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o Código 🧑‍💻
  
 ```c
 
