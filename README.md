@@ -137,6 +137,148 @@ Retorno: A string formatada com as opções.
 <hr>
 
 ## Explicando o <a href="path">Código</a> 🧑‍💻
+```c
+from helpers import forca_opcao, limpar_tela, print_de_opcoes
+from simulacao_paths import pegar_mapa, caminho_permitido
+```
+Descrição: Importa as funções forca_opcao, limpar_tela e print_de_opcoes do módulo helpers e as funções pegar_mapa e caminho_permitido do módulo simulacao_paths.
+<hr>
+
+```c
+y_axis = 0
+x_axis = 0
+```
+Descrição: Define variáveis globais para manter a posição atual do usuário no mapa.
+<hr>
+
+```c
+def andar_mapa(direction):
+    global y_axis
+    global x_axis
+
+    if direction == '1':
+        y_axis -= 1
+    elif direction == '3':
+        y_axis += 1
+    elif direction == '2':
+        x_axis += 1
+    elif direction == '4':
+        x_axis -= 1
+
+    updates_coordinates = [str(y_axis), str(x_axis)]
+    return updates_coordinates
+```
+Parâmetros: `direction`: A direção em que o usuário deseja se mover ('1', '2', '3', '4').
+<br>
+Descrição: Atualiza as coordenadas `y_axis` e `x_axis` com base na direção fornecida.
+Retorna as novas coordenadas como uma lista de strings.
+<hr>
+
+```c
+def tela_simulacao():
+    simulacao_welcome_msg = ("Olá, seja bem vindo ao nosso sistema de "
+                             "simulação de ajuda litorânea!!\n"
+                             "Aqui, você pode nos ajudar a encontrar resíduos "
+                             "espalhados pela praia de sua escolha.\n"
+                             "Nossos escâners irão lhe ajudar a encontrar "
+                             "resíduos na área, para que então "
+                             "você possa reportar "
+                             "para o nosso aplicativo.\n"
+                             "Além de ajudar o meio ambiente "
+                             "você ajuda a si mesmo "
+                             "e outras pessoas atualizando-as sobre o "
+                             "estado ambiental daquela região.")
+
+    praias = ['Maresias', 'Juquehy', 'Ubatuba']
+    print_de_praias = print_de_opcoes(praias)
+
+    msg_escolha_praia = 'Escolha um praia para escanear!\n--> '
+    msg_erro_escolha_praia = ('Por favor, escolha exatamente uma praia '
+                              'da lista:\n'
+                              f'{print_de_praias}')
+
+    user_praia = forca_opcao(msg_escolha_praia, praias, msg_erro_escolha_praia)
+
+    print(simulacao_welcome_msg)
+```
+Descrição: Exibe uma mensagem de boas-vindas. Mostra uma lista de praias disponíveis e força o usuário a escolher uma praia válida. Exibe a mensagem de boas-vindas após a seleção da praia.
+<hr>
+
+```c
+    def each_step(allowed_command):
+        comandos_disponiveis = print_de_opcoes(
+            allowed_command, line_break=False)
+        opcao_disp = f'As opções disponíveis são: 0, {comandos_disponiveis}\n'
+        return opcao_disp
+
+    qual_caminho_permitido = caminho_permitido()  # Começando em [0, 0]
+    caminho_atual, lixo_achado = pegar_mapa(['0', '0'], user_praia)
+    botao_de_voltar = '0'
+    botao_de_reportar_lixo = 'achei'
+    lixo_foi_achado = False
+```
+Parâmetros: `allowed_command`: Lista de comandos permitidos.
+<br>
+Descrição:Formata e retorna uma string com as opções de comandos permitidos.
+<hr>
+
+```c
+    while True:
+        if lixo_achado:
+            qual_caminho_permitido.append(botao_de_reportar_lixo)
+
+        allowed_options = each_step(qual_caminho_permitido)
+        perguntar_user_texto = 'Para onde gostaria de ir?\n--> '
+        error_msg = 'Por favor...\n' + allowed_options + '\n' + caminho_atual
+
+        limpar_tela()
+        print(each_step(qual_caminho_permitido))
+        print(caminho_atual)
+
+        if lixo_foi_achado:
+            user_direction = forca_opcao(perguntar_user_texto,
+                                         [botao_de_reportar_lixo] +
+                                         [botao_de_voltar] +
+                                         qual_caminho_permitido,
+                                         error_msg)
+        else:
+            user_direction = forca_opcao(perguntar_user_texto,
+                                         [botao_de_voltar] +
+                                         qual_caminho_permitido,
+                                         error_msg)
+
+        if user_direction == botao_de_voltar:  # Quando o usuário quiser sair
+            break
+        elif user_direction == botao_de_reportar_lixo:
+            print('Lixo reportado para o aplicativo '
+                  'e para as autoridades locais')
+            return 1
+            break
+
+        pegar_coordenadas = andar_mapa(user_direction)
+        qual_caminho_permitido = caminho_permitido(pegar_coordenadas)
+        caminho_atual, lixo_achado = pegar_mapa(pegar_coordenadas, user_praia)
+        lixo_foi_achado = lixo_achado
+```
+Descrição: Inicializa variáveis para rastrear os caminhos permitidos, o caminho atual e se o lixo foi encontrado.
+Define constantes para os botões de voltar e reportar lixo.
+<br>
+Loop infinito que continua até o usuário decidir sair ou reportar lixo.
+Atualiza as opções de comandos permitidos com base na situação atual.
+Limpa a tela e exibe as opções disponíveis e o caminho atual.
+Força o usuário a escolher uma direção válida.
+Se o usuário escolhe voltar, o loop termina.
+Se o usuário escolhe reportar lixo, uma mensagem é exibida e o loop termina.
+Atualiza as coordenadas e os caminhos permitidos com base na escolha do usuário.
+Verifica se o lixo foi encontrado e atualiza a variável correspondente.
+<hr>
+
+## Explicando o <a href="path">Código</a> 🧑‍💻
+
+
+
+
+
 
 
 
