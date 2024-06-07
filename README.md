@@ -194,7 +194,7 @@ Dependendo da escolha do usuário, uma das três funções é chamada: Simulaç�
 Se a escolha for '0', o loop é interrompido e o programa termina.
 <hr>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o <a href="https://github.com/gh-johnny/gs-1-python/blob/main/simulacao.py">Código</a> 🧑‍💻
 ```c
 from helpers import forca_opcao, limpar_tela, print_de_opcoes
 from simulacao_paths import pegar_mapa, caminho_permitido
