@@ -182,16 +182,15 @@ Descrição: O loop `while True` exibe continuamente o menu principal até que o
 Passos no Loop:
 Exibição do Menu:
 O sistema exibe uma mensagem de boas-vindas e solicita ao usuário que escolha uma das opções disponíveis no menu.
+<br>
 Processamento da Escolha:
 A função `forca_opcao` é usada para garantir que o usuário insira uma opção válida. Caso contrário, uma mensagem de erro é exibida.
+<br>
 Limpeza da Tela:
 `limpar_tela` é chamada para limpar a tela antes de continuar com a ação selecionada.
+<br>
 Execução da Função Correspondente:
-Dependendo da escolha do usuário, uma das três funções é chamada:
-Simulação: `tela_simulacao`
-Dados Capturados: `sys_dados`
-Doação: `sys_doacao`
-Saída do Loop:
+Dependendo da escolha do usuário, uma das três funções é chamada: Simulação: `tela_simulacao`; Dados Capturados: `sys_dados`; Doação: `sys_doacao`; Saída do Loop:
 Se a escolha for '0', o loop é interrompido e o programa termina.
 <hr>
 
