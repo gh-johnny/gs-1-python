@@ -23,7 +23,7 @@ Um app em Python, com o tema de poluição marinha, que dá ao usuário escolhas
  
 <br>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o <a href="https://github.com/gh-johnny/gs-1-python/blob/main/helpers.py">Código</a> 🧑‍💻
  
 ```c
 def limpar_tela(linhas=20):
