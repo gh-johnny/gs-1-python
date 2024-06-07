@@ -601,7 +601,7 @@ Retorno:
 `lixo_achado`: Booleano indicando se o lixo foi encontrado.
 <hr>
 
-## Explicando o <a href="path">Código</a> 🧑‍💻
+## Explicando o <a href="https://github.com/gh-johnny/gs-1-python/blob/main/sysfunctions.py">Código</a> 🧑‍💻
 
 ```c
 from helpers import forca_opcao, verifica_numero, meu_index, print_de_opcoes
