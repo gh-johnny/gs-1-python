@@ -2,7 +2,7 @@ from helpers import forca_opcao, limpar_tela
 from sysfunctions import sys_dados, sys_doacao
 from simulacao import tela_simulacao
 
-nome_da_empresa = "Ocean Solution "
+nome_da_empresa = "Ocean Guardians"
 lista_menu_opcao = ['1', '2', '3', '0']
 lista_praias = ["Maresias", "Juquehy", "Ubatuba"]
 
