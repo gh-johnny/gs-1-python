@@ -32,13 +32,10 @@ def sys_dados():
 
     def exibir_resultado(local_praia):
         print(f"\nResultado: O mar da praia {lista_praias[local_praia]} está com uma luminosidade de "
-              f"{sensor_LDR[local_praia]}%, oxigênio está em {
-                  sensor_DHT_oxy[local_praia]}mg/L, "
-              f"temperatura está em {sensor_DHT_temp[local_praia]}ºC, o pH está em {
-                  sensor_pH[local_praia]}, "
-              f"a quantia de CO2(Gás Carbônico) é de {
-            sensor_gas_CO2[local_praia]}% e de CH4"
-            f"(Gás Metano) é de {sensor_gas_CH4[local_praia]}%, e a distância do sensor de proximidade é de {sensor_proximidade[local_praia]} metros\n")
+              f"{sensor_LDR[local_praia]}%, oxigênio está em {sensor_DHT_oxy[local_praia]}mg/L, "
+              f"temperatura está em {sensor_DHT_temp[local_praia]}ºC, o pH está em {sensor_pH[local_praia]}, "
+              f"a quantia de CO2(Gás Carbônico) é de {sensor_gas_CO2[local_praia]}% e de CH4"
+              f"(Gás Metano) é de {sensor_gas_CH4[local_praia]}%, e a distância do sensor de proximidade é de {sensor_proximidade[local_praia]} metros\n")
 
     def exibir_dado_especifico(local_praia, dado_especifico):
         if dado_especifico == '1':
@@ -97,8 +94,8 @@ def sys_doacao():
                                      "Digite apenas os números correspondentes ao caminho indicado")
         if escolha_doacao == "s":
             total_doado += doacao
-            print(f"Muitissímo obrigado pela sua doação de R${doacao:.2f} !!!\n"
-                  f"Total doado: R${total_doado:.2f}")
+            print(f"\nMuitissímo obrigado pela sua doação de R${doacao:.2f} !!!\n"
+                  f"Total doado: R${total_doado:.2f}\n")
             break
         elif escolha_doacao == "n":
             continue
