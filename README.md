@@ -275,6 +275,9 @@ Verifica se o lixo foi encontrado e atualiza a variável correspondente.
 
 ## Explicando o <a href="path">Código</a> 🧑‍💻
 
+```c
+
+```
 
 
 
@@ -290,7 +293,15 @@ Verifica se o lixo foi encontrado e atualiza a variável correspondente.
 
 
 
-## Funções 🛠️
+
+
+
+## Explicando o <a href="path">Código</a> 🧑‍💻
+
+
+
+
+
 
 
  
