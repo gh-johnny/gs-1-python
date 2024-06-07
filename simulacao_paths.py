@@ -84,8 +84,7 @@ def pegar_mapa(coordenadas, user_praia):
     label_esquerda = f'{COMMANDOS[3]}\n'
     label_direita = f' {COMMANDOS[1]}\n'
     label_esquerda_direita = f'{COMMANDOS[3]}   \t \t{label_direita}'
-    label_esquerda_direita_com_algo_na_direita = f'{
-        COMMANDOS[3]}   \t \t{COMMANDOS[1]}(?)\n'
+    label_esquerda_direita_com_algo_na_direita = f'{COMMANDOS[3]}   \t \t{COMMANDOS[1]}(?)\n'
     label_baixo = f'\t  {COMMANDOS[2]} \n'
 
     seta_cima = ('\t^\n'
