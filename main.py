@@ -7,7 +7,6 @@ lista_menu_opcao = ['1', '2', '3', '0']
 lista_praias = ["Maresias", "Juquehy", "Ubatuba"]
 
 while True:
-    limpar_tela()
     print(f"Seja bem-vindo à {nome_da_empresa}!!!")
     caminho = forca_opcao("Por qual caminho você deseja seguir:\n"
                           "1 - Simulação\n"
